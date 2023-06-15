@@ -1,0 +1,32 @@
+﻿@model Fochso.Models.Class.UpdateClassViewModel
+@{
+	ViewData["Title"] = "Edit Classs";
+}
+
+<div class="body">
+
+	<div class="row">
+		<div class="col-md-6">
+			<form asp-action="Update">
+
+				<div class="col-md-12 mb-3">
+					<label class="control-label mb-1">Class Name:</label>
+					<textarea asp-for="Name" type="text" class="form-control"></textarea>
+					<span asp-validation-for="Name" class="text-danger"></span>
+				</div
+				
+				<div class="col-md-12 mb-3">
+					<label class="control-label mb-1">Class Name:</label>
+					<textarea asp-for="Description" type="text" class="form-control"></textarea>
+					<span asp-validation-for="Description" class="text-danger"></span>
+				</div>
+
+				<div class="col-md-12">
+					<button type="submit" class="btn btn-primary">Update</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+

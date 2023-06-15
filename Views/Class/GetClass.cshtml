@@ -1,0 +1,39 @@
+﻿@model Fochso.Models.Class.ClassViewModel
+@{
+    ViewData["Title"] = "Class Details";
+}
+
+<div class="body">
+
+
+    @if (Model is not null)
+    {
+        <dl class="row">
+            <dt class="col-sm-4">
+                Class Name:
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Name
+            </dd>
+
+            <dt class="col-sm-4">
+                class Description':
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Description
+            </dd>
+        </dl>
+        <br />
+        <div class="btn-group">
+            <a asp-controller="Class" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-success">Update</a>
+            &nbsp;
+            <form asp-action="Delete" asp-route-id="@Model.Id">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            &nbsp;
+            <a asp-controller="Class" asp-action="Index" class="btn btn-outline-secondary">Go back to list</a>
+        </div>
+    }
+</div>

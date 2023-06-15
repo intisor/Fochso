@@ -1,0 +1,35 @@
+﻿@model Fochso.Models.Teacher.CreateTeacherViewModel
+@{
+    ViewData["Title"] = "Create Teacher";
+    var teacherId = ViewContext.RouteData.Values["id"];
+}
+
+<div class="body">
+
+    @await Html.PartialAsync("_NoModelAlert")
+
+    <div class="row">
+        <div class="col-md-6">
+            <hr />
+            <form asp-action="create">
+                @*<input type="hidden" class="form-control" asp-for="Id" value="@Id" />*@
+
+                <div class="col-md-12 mb-2">
+                    <label for="Name" class="form-label">Name:</label>
+                    <textarea class="form-control" placeholder="Enter Name" asp-for="Name"></textarea>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <label for="TeachingSubject" class="form-label">Teaches:</label>
+                    <textarea class="form-control" placeholder="Enter Subjects" asp-for="TeachingSubject"></textarea>
+                    <span asp-validation-for="TeachingSubject" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">Add Teacher</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,35 @@
+﻿@model Fochso.Models.Student.CreateStudentViewModel
+@{
+    ViewData["Title"] = "Create New Student";
+}
+
+<div class="body">
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <div class="col-md-12 mb-2">
+                    <label for="Name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter Student Name" name="Name">
+                </div>
+
+                <div class="col-md-12 mb-2">
+                    <label for="Class" class="form-label">Class:</label>
+                    <textarea class="form-control" placeholder="Enter Student's Class" name="Class"></textarea>
+                </div>
+                  <div class="col-md-12 mb-2">
+                    <label for="Department" class="form-label">Departmet:</label>
+                    <textarea class="form-control" placeholder="Enter Student's Department" name="Department"></textarea>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <label for="Age" class="form-label">Age:</label>
+                    <textarea class="form-control" placeholder="Enter Student's Age" name="Age"></textarea>
+                </div>
+
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">Add Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

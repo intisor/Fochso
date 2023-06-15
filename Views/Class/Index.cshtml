@@ -1,0 +1,40 @@
+﻿@model List<Fochso.Models.Class.ClassViewModel>
+
+@{
+    ViewData["Title"] = "Class List";
+    int count = 1;
+}
+
+@await Html.PartialAsync("_ListAlert", Model)
+
+@if (Model is not null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">S/N</th>
+                <th scope="col">Class Name</th>
+                <th scope="col">Class Description</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@count</th>
+                    <td scope="row">@item.Name</td>
+                    <td scope="row">@item.Description</td>
+                    <td scope="row">
+                        <div class="btn-group">
+                            <a asp-controller="Class" asp-action="GetClass" asp-route-id="@item.Id" class="btn btn-primary">View</a>
+                        </div>
+                    </td>
+                </tr>
+                count++;
+            }
+        </tbody>
+    </table>
+}
+
