@@ -23,7 +23,6 @@ namespace Fochso.Context
                     Description = "Role for admin",
                     CreatedBy = "System",
                     DateCreated = DateTime.Now,
-                    ModifiedBy = "",
                     LastModified = new DateTime() //0001-01-01 00:00:00:00
                 },
                 new Role()
@@ -32,7 +31,6 @@ namespace Fochso.Context
                     Description = "Role for nominal user",
                     CreatedBy = "System",
                     DateCreated = DateTime.Now,
-                    ModifiedBy = "",
                     LastModified = new DateTime()
                 }
             };
@@ -44,7 +42,7 @@ namespace Fochso.Context
 
             context.SaveChanges();
 
-            var password = "p@ssword1";
+            //var password = "p@ssword1";
             //var salt = HashingHelper.GenerateSalt();
             var admin = context.Roles.Where(r => r.RoleName == "Admin").SingleOrDefault();
 
@@ -52,14 +50,15 @@ namespace Fochso.Context
             {
                 new User()
                 {
-                    UserName = "admin",
+                    UserName = "Admin",
                     //HashSalt = salt,
                     //PasswordHash = HashingHelper.HashPassword(password, salt),
+                    Password = "p@ssword1",
                     Email = "admin@gmail.com",
                     RoleId = admin.Id,
+                    RoleName = admin.RoleName,
                     CreatedBy = "System",
                     DateCreated = DateTime.Now,
-                    ModifiedBy = "",
                     LastModified = new DateTime()
                 }
             };

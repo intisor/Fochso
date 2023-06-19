@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>2550488b-5d6e-49bd-8c7a-9a146d5a9aff</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
@@ -11,6 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Context\Migrations\**" />
+    <Compile Remove="Migrations\**" />
+    <Content Remove="Context\Migrations\**" />
+    <Content Remove="Migrations\**" />
+    <EmbeddedResource Remove="Context\Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Context\Migrations\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.7">
       <PrivateAssets>all</PrivateAssets>

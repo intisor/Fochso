@@ -72,7 +72,6 @@ namespace Fochso.Service.Implementations
 				return response;
 			}
 
-
 			try
 			{
 				_unitOfWork.Roles.Update(role);

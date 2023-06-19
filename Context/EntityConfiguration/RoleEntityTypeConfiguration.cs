@@ -22,7 +22,7 @@ namespace Fochso.Context.EntityConfiguration
             builder.Property(r => r.Description)
                    .HasMaxLength(200);
 
-            builder.HasMany<User>(r => r.Users)
+            builder.HasMany(r => r.Users)
                    .WithOne(u => u.Role)
                    .HasForeignKey(u => u.RoleId);
         }

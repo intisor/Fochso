@@ -7,6 +7,11 @@
 
 @await Html.PartialAsync("_ListAlert", Model)
 
+<div>
+    <a asp-controller="Teacher" asp-action="Create">Add New Student</a>
+</div>
+
+
 @if (Model is not null)
 {
     <table class="table">

@@ -16,8 +16,8 @@ namespace Fochso.Context.EntityConfiguration
 				.IsRequired()
 				.HasMaxLength(10);
 
-			builder.Property(u => u.Password)
-				.IsRequired();
+			//builder.Property(u => u.Password)
+			//	.IsRequired();
 
 
 			builder.Property(u => u.Email)
@@ -26,9 +26,11 @@ namespace Fochso.Context.EntityConfiguration
 			builder.Property(u => u.RoleId)
 				.IsRequired();
 
-			//builder.HasMany<List<User>>(u => u.RoleName)
-			//	   .WithOne(sre => sre.)
-			//	   .HasForeignKey(sre => sre.UserId);
+			builder.Property(u => u.RoleName);
+
+			builder.HasOne(u => u.Role)
+				   .WithMany(sre => sre.Users)
+				   .HasForeignKey(sre => sre.RoleId);
 		}
     }
 }

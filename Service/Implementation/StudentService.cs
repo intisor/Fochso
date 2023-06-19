@@ -41,6 +41,7 @@ namespace Fochso.Service.Implementation
             {
                 Name = createStudent.Name,
                 Class = createStudent.Class,
+                //ClassClass = createStudent.Class
                 CreatedBy = createdBy
             };
 

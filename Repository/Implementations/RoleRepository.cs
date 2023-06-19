@@ -27,7 +27,9 @@ namespace Fochso.Repository.Implementations
 		{
 			var roles = _context.Roles
 				 .Where(expression)
-				.Include(s => s.Users)
+				 .Include(s => s.RoleName)
+				 .Include(s => s.Id)
+                .Include(s => s.Users)
 				.Include(s => s.Id)
 				.ToList();
 

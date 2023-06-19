@@ -22,10 +22,10 @@ namespace Fopchso.Context.EntityConfiguration
             builder.Property(c => c.Class)
                 .HasMaxLength(200);
 
-			//builder.HasOne(qr => qr.Name)
-			//	   .WithMany(qr => qr.)
-			//	   .HasForeignKey(qr => qr.ClassId)
-			//	   .IsRequired();
-		}
+            builder.HasOne(qr => qr.ClassClass)
+                   .WithMany(qr => qr.Students)
+                   .HasForeignKey(qr => qr.ClassId)
+                   .IsRequired();
+        }
     }
 }

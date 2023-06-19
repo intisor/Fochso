@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace Fochso.Migrations
 {
     /// <inheritdoc />
-    public partial class Migrations : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

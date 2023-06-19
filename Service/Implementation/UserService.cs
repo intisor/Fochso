@@ -5,6 +5,7 @@ using Fochso.Repository.Interfaces;
 using Fochso.Service.Interface;
 using Fochso.Models.Authorize;
 using Microsoft.AspNetCore.Mvc;
+using AspNetCore;
 
 namespace Fochso.Service.Implementations
 {
@@ -19,7 +20,7 @@ namespace Fochso.Service.Implementations
 			_unitOfWork = unitOfWork;
 		}
 
-		public BaseResponseModel AddUser(SignUpViewModel request, string roleName)
+		public BaseResponseModel AddUser(SignUpViewModel request)
 		{
 			var response = new BaseResponseModel();
 			var createdBy = _httpContextAccessor.HttpContext.User.Identity.Name;
@@ -31,7 +32,7 @@ namespace Fochso.Service.Implementations
 				return response;
 			}
 
-			roleName = "AppUser";
+			string roleName = "AppUser";
 
 			var role = _unitOfWork.Roles.Get(x => x.RoleName == roleName);
 
@@ -46,7 +47,8 @@ namespace Fochso.Service.Implementations
 				UserName = request.UserName,
 				Email = request.Email,
 				Password = request.Password,
-				RoleId = role.Id,
+				RoleId = 2,
+				RoleName= roleName,
 				CreatedBy = createdBy,
 			};
 
@@ -81,10 +83,12 @@ namespace Fochso.Service.Implementations
 
 			response.Data = new UserViewModel
 			{
+				//UserId = user.Id,
 				UserName = user.UserName,
+				//Password = user.Password,
 				Email = user.Email,
 				RoleId = user.RoleId,
-				RoleName = user.RoleName,
+				RoleName = user.Role.RoleName,
 			};
 			response.Message = $"User successfully retrieved";
 			response.Status = true;
@@ -92,15 +96,15 @@ namespace Fochso.Service.Implementations
 			return response;
 		}
 
-		public UserResponseModel Login(string userName, string password)
+		public UserResponseModel Login(LoginViewModel model)
 		{
 			var response = new UserResponseModel();
 
 			try
 			{
 				var user = _unitOfWork.Users.GetUser(x =>
-								(x.UserName.ToLower() == userName.ToLower()
-								|| x.Password.ToLower() == password.ToLower()));
+								(x.UserName.ToLower() == model.UserName.ToLower()
+								|| x.Email.ToLower() == model.UserName.ToLower()));
 
 				if (user is null)
 				{
@@ -111,10 +115,11 @@ namespace Fochso.Service.Implementations
 				response.Data = new UserViewModel
 				{
 					Id = user.Id,
+					//Password = user.Password,
 					UserName = user.UserName,
 					Email = user.Email,
 					RoleId = user.RoleId,
-					RoleName = userName,
+					RoleName = user.Role.RoleName,
 				};
 				response.Message = $"Welcome {user.UserName}";
 				response.Status = true;

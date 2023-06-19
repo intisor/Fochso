@@ -21,8 +21,7 @@ namespace Fochsso.Context
 
             builder.HasMany(qr => qr.Students)
                    .WithOne(qr => qr.ClassClass)
-                   .HasForeignKey(qr => qr.Id)
-                   .IsRequired();
+                   .HasForeignKey(qr => qr.ClassId);
         }
     }
 }

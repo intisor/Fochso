@@ -16,8 +16,38 @@ namespace Fochso.Repository.Implementations
         public User GetUser(Expression<Func<User, bool>> expression)
         {
             return _context.Users
-                .Include(x => x.RoleId)
-                .SingleOrDefault(expression)!;
+           .Include(x => x.Role)
+           //.Include(s => s.Role)
+           //.ThenInclude(s => s.RoleName)
+           .SingleOrDefault(expression)!;
+        }
+
+        public List<User> GetUsers()
+        {
+            var users = _context.Users
+              .Include(s => s.Role)
+              .ThenInclude(s => s.Id)
+              .Include(s => s.Role)
+                .ThenInclude(s => s.RoleName)
+              .Include(s => s.UserName)
+              .Include(s => s.Id)
+              .ToList();
+
+            return users;
+        }
+
+        public List<User> GetUsers(Expression<Func<User, bool>> expression)
+        {
+            var users = _context.Users
+                .Include(s => s.Role)
+                .ThenInclude(s => s.Id)
+                .Include(s => s.Role)
+                .ThenInclude(s => s.RoleName)
+                .Include(s => s.Id)
+                .Include(s => s.UserName)
+                .ToList();
+
+            return users;
         }
     }
 }

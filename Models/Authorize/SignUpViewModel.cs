@@ -6,7 +6,6 @@ namespace Fochso.Models.Authorize
     {
         [Required(ErrorMessage = "Username is required.")]
         [MinLength(3, ErrorMessage = "The minimum lenght is 3.")]
-        [MaxLength(10)]
         public string UserName { get; set; }
 
         [Required]
